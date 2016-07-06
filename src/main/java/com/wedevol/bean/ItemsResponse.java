@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /*
- * Items Response: To manage list of items of a menu. It can manage filters.
+ * Items Response: To manage list of items of a menu. It can be filtered.
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
