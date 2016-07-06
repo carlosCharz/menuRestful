@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wedevol.util.Util;
 
 /*
  * Item of a Menu
@@ -26,10 +28,12 @@ public class Item implements Serializable {
 	@JsonProperty("photo")
 	private byte[] photo;
 	@JsonProperty("days")
-	private List<WeekDays> days;
+	private List<WeekDay> days;
 	@JsonProperty("dateFrom")
+	@JsonFormat(pattern=Util.DATE_FORMAT)
 	private Date dateFrom;
 	@JsonProperty("dateTo")
+	@JsonFormat(pattern=Util.DATE_FORMAT)
 	private Date dateTo;
 	@JsonProperty("hourFrom")
 	private String hourFrom;
@@ -37,6 +41,18 @@ public class Item implements Serializable {
 	private String hourTo;
 	@JsonProperty("ranking")
 	private int ranking;
+
+	public Item() {
+	}
+
+	public Item(int id, String name, String description, Double price, String currency, int ranking) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.currency = currency;
+		this.ranking = ranking;
+	}
 
 	public int getId() {
 		return id;
@@ -86,11 +102,11 @@ public class Item implements Serializable {
 		this.photo = photo;
 	}
 
-	public List<WeekDays> getDays() {
+	public List<WeekDay> getDays() {
 		return days;
 	}
 
-	public void setDays(List<WeekDays> days) {
+	public void setDays(List<WeekDay> days) {
 		this.days = days;
 	}
 

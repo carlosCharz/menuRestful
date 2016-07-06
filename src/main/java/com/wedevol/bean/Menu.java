@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /*
- * Menu
+ * Menu Bean
  */
 
 public class Menu implements Serializable {
@@ -22,6 +22,15 @@ public class Menu implements Serializable {
 	private List<Item> items;
 	@JsonProperty("submenus")
 	private List<Menu> submenus;
+	
+	public Menu(){
+	}
+
+	public Menu(int id, String description, boolean active) {
+		this.id = id;
+		this.decription = description;
+		this.active = active;
+	}
 
 	public int getId() {
 		return id;
