@@ -2,6 +2,7 @@ package com.wedevol.service;
 
 import java.util.List;
 
+import com.wedevol.bean.Item;
 import com.wedevol.bean.Menu;
 import com.wedevol.exception.ErrorException;
 
@@ -12,6 +13,8 @@ import com.wedevol.exception.ErrorException;
 public interface MenuService {
 
 	public List<Menu> getMenus() throws Exception;
+
+	public List<Item> getItems(Integer id, String orderby, Boolean asc) throws ErrorException;
 
 	public Menu getMenu(Integer id) throws ErrorException;
 

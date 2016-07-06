@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wedevol.bean.Item;
+import com.wedevol.bean.ItemsResponse;
 import com.wedevol.bean.Menu;
 import com.wedevol.bean.MenuResponse;
 import com.wedevol.bean.MenusResponse;
 import com.wedevol.bean.StateResponse;
+import com.wedevol.exception.ErrorException;
 import com.wedevol.service.MenuService;
 import com.wedevol.util.Util;
 
@@ -57,6 +61,33 @@ public class MenuController {
 		return response;
 	}
 
+	/* Get a menu items ordered by price or ranking */
+	/*
+	 * http://localhost:8080/menuRestful/menu/1/items?orderby=price&asc=true
+	 */
+	@RequestMapping(value = "/{id}/items", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	public @ResponseBody ItemsResponse getItemsGroupedBy(@PathVariable("id") Integer id,
+			@RequestParam(value = "orderby", defaultValue="price", required = true) String orderby,
+			@RequestParam(value = "asc", defaultValue="true", required = true) Boolean asc) {
+
+		ItemsResponse response = new ItemsResponse();
+		List<Item> items;
+
+		try {
+			items = menuService.getItems(id, orderby, asc);
+			response.setItems(items);
+			response.setCode(Util.OK_CODE);
+			response.setMessage(Util.OK_MESSAGE);
+			logger.debug(Util.OK_LABEL + items);
+		} catch (ErrorException e) {
+			response.setItems(null);
+			response.setCode(e.getCode());
+			response.setMessage(e.getMessage());
+			logger.error(Util.ERROR_LABEL + e.getMessage());
+		}
+		return response;
+	}
+
 	/* Get a menu */
 	/*
 	 * http://localhost:8080/menuRestful/menu/1
@@ -64,8 +95,22 @@ public class MenuController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody MenuResponse getMenu(@PathVariable("id") Integer id) {
 
-		/* TODO */
-		return new MenuResponse();
+		MenuResponse response = new MenuResponse();
+		Menu menu;
+
+		try {
+			menu = menuService.getMenu(id);
+			response.setMenu(menu);
+			response.setCode(Util.OK_CODE);
+			response.setMessage(Util.OK_MESSAGE);
+			logger.debug(Util.OK_LABEL + menu);
+		} catch (ErrorException e) {
+			response.setMenu(null);
+			response.setCode(e.getCode());
+			response.setMessage(e.getMessage());
+			logger.error(Util.ERROR_LABEL + e.getMessage());
+		}
+		return response;
 	}
 
 	/* Create a menu */

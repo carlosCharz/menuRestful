@@ -134,7 +134,11 @@ public class MenuDAOMockImpl implements MenuDAO {
 
 	@Override
 	public Menu findById(int id) {
-		// TODO Auto-generated method stub
+		for (Menu menu : menus) {
+			if (menu.getId() == id) {
+				return menu;
+			}
+		}
 		return null;
 	}
 
