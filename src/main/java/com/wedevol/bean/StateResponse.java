@@ -9,6 +9,10 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/*
+ * State Response Bean
+ */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StateResponse implements Serializable {
 

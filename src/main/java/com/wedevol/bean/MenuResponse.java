@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /*
- * Menu Response
+ * Menu Response Bean
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
