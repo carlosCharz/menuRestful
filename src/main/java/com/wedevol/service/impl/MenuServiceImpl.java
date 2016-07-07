@@ -76,6 +76,28 @@ public class MenuServiceImpl implements MenuService {
 		}
 	}
 
+	/*
+	 * Get the sum of the prices of the items of a menu (included of the
+	 * submenus) (Pregunta 4)
+	 */
+	@Override
+	public double sumPricesOfItems(final Menu menu) {
+		double total = 0d;
+		if (menu == null) {
+			return 0d;
+		} else {
+			for (Item item : menu.getItems()) {
+				total += item.getPrice();
+			}
+			if (menu.getSubmenus()!= null) {
+				for (Menu sm : menu.getSubmenus()) {
+					total += sumPricesOfItems(sm);
+				}
+			}
+			return total;
+		}
+	}
+
 	@Override
 	public Menu getMenu(Integer id) throws ErrorException {
 		try {

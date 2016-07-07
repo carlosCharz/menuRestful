@@ -36,7 +36,7 @@ public class MenuController {
 	@Autowired
 	private MenuService menuService;
 
-	/* Get list of menus */
+	/* Get list of menus (Pregunta 2) */
 	/*
 	 * http://localhost:8080/menuRestful/menu/list
 	 */
@@ -61,14 +61,14 @@ public class MenuController {
 		return response;
 	}
 
-	/* Get a menu items ordered by price or ranking */
+	/* Get a menu items ordered by price or ranking (Pregunta 3) */
 	/*
 	 * http://localhost:8080/menuRestful/menu/1/items?orderby=price&asc=true
 	 */
 	@RequestMapping(value = "/{id}/items", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody ItemsResponse getItemsGroupedBy(@PathVariable("id") Integer id,
-			@RequestParam(value = "orderby", defaultValue="price", required = true) String orderby,
-			@RequestParam(value = "asc", defaultValue="true", required = true) Boolean asc) {
+			@RequestParam(value = "orderby", defaultValue = "price", required = true) String orderby,
+			@RequestParam(value = "asc", defaultValue = "true", required = true) Boolean asc) {
 
 		ItemsResponse response = new ItemsResponse();
 		List<Item> items;

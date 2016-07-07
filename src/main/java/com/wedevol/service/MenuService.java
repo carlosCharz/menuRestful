@@ -15,6 +15,8 @@ public interface MenuService {
 	public List<Menu> getMenus() throws Exception;
 
 	public List<Item> getItems(Integer id, String orderby, Boolean asc) throws ErrorException;
+	
+	public double sumPricesOfItems(Menu menu);
 
 	public Menu getMenu(Integer id) throws ErrorException;
 
