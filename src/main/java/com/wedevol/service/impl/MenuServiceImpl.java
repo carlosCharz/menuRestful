@@ -32,6 +32,12 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public List<Menu> getMenus() throws Exception {
+		logger.debug("Calling the MenuServiceImpl.getMenus() method to test the profiler!");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			//TODO
+		}
 		return menuDAO.findAll();
 	}
 
