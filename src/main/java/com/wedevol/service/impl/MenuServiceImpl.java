@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ import com.wedevol.util.Util;
 
 @Service
 public class MenuServiceImpl implements MenuService {
+
+	private static final Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
 
 	@Autowired
 	private MenuDAO menuDAO;
@@ -78,7 +82,7 @@ public class MenuServiceImpl implements MenuService {
 
 	/*
 	 * Get the sum of the prices of the items of a menu (included of the
-	 * submenus) (Pregunta 4)
+	 * submenus) (Question 4)
 	 */
 	@Override
 	public double sumPricesOfItems(final Menu menu) {
@@ -89,12 +93,36 @@ public class MenuServiceImpl implements MenuService {
 			for (Item item : menu.getItems()) {
 				total += item.getPrice();
 			}
-			if (menu.getSubmenus()!= null) {
+			if (menu.getSubmenus() != null) {
 				for (Menu sm : menu.getSubmenus()) {
 					total += sumPricesOfItems(sm);
 				}
 			}
 			return total;
+		}
+	}
+
+	/*
+	 * Get the quantity of active submenus of a menu (Question 5)
+	 */
+	@Override
+	public int getQtyActiveSubmenus(final Menu menu) {
+		int counter = 0;
+		StringBuilder sb = new StringBuilder();
+		if (menu == null) {
+			return 0;
+		} else {
+			if (menu.getSubmenus() != null) {
+				for (Menu sm : menu.getSubmenus()) {
+					// To log all the submenus names (Question 6)
+					sb.append(menu.getDecription()).append(Util.EMPTY_SPACE);
+					if (sm.isActive()) {
+						counter += 1;
+					}
+				}
+				logger.debug(Util.SUBMENUS_LABEL + sb.toString());
+			}
+			return counter;
 		}
 	}
 

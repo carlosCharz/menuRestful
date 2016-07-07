@@ -15,7 +15,7 @@ import com.wedevol.dao.MenuDAO;
 import com.wedevol.util.Util;
 
 /*
- * MenuDAOMockImpl: mock class for the menu DAO (until we code the real DAO)
+ * MenuDAOMockImpl: mock class for the menu DAO (until we code the real DAO) (Question 8)
  */
 
 @Repository
@@ -62,7 +62,7 @@ public class MenuDAOMockImpl implements MenuDAO {
 			i1.setHourTo("23:00");
 			m2.setItems(Arrays.asList(i1));
 
-			sm1 = new Menu(3, "Menu 2 - SubMenu 1", true);
+			sm1 = new Menu(3, "Menu 2 - SubMenu 1", false);
 			i1 = new Item(1, "Menu 2 - SubMenu 1 - Item 1", "Description of Menu 2 - SubMenu 1 - Item 1", 23d, "$", 3);
 			i1.setPhoto(null);
 			i1.setDays(Arrays.asList(WeekDay.FRIDAY, WeekDay.SATURDAY));

@@ -20,6 +20,8 @@ public class Util {
 	public static final String DATE_FORMAT = "dd/MM/yyyy";
 	public static final String ORDER_BY_PRICE = "price";
 	public static final String ORDER_BY_RANKING = "ranking";
+	public static final String SUBMENUS_LABEL = "Submenus --->";
+	public static final String EMPTY_SPACE = " ";
 
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));

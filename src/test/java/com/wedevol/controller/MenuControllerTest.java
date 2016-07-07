@@ -80,7 +80,6 @@ public class MenuControllerTest {
 
 	@Test
 	public void sumPricesOfItems_ShouldReturnTotalPrice() {
-
 		final MenuService menuService = new MenuServiceImpl();
 		Menu menu;
 		double sum;
@@ -99,6 +98,28 @@ public class MenuControllerTest {
 		menu = menuDAOMockImpl.findById(4);
 		sum = menuService.sumPricesOfItems(menu);
 		Assert.assertEquals(82d, sum, 0.001);
+	}
+
+	@Test
+	public void getQtyActiveSubmenus_ShouldReturnTheCorrectQty() {
+		final MenuService menuService = new MenuServiceImpl();
+		Menu menu;
+		int counter;
+
+		// Zero submenus
+		menu = menuDAOMockImpl.findById(1);
+		counter = menuService.getQtyActiveSubmenus(menu);
+		Assert.assertEquals(0, counter);
+
+		// One inactive submenu
+		menu = menuDAOMockImpl.findById(2);
+		counter = menuService.getQtyActiveSubmenus(menu);
+		Assert.assertEquals(0, counter);
+
+		// Two active submenus
+		menu = menuDAOMockImpl.findById(4);
+		counter = menuService.getQtyActiveSubmenus(menu);
+		Assert.assertEquals(2, counter);
 	}
 
 }

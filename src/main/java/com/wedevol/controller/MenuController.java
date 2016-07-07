@@ -24,7 +24,7 @@ import com.wedevol.service.MenuService;
 import com.wedevol.util.Util;
 
 /*
- * MenuController: main menu rest api
+ * MenuController: main menu rest api (Question 1)
  */
 
 @Controller
@@ -36,7 +36,7 @@ public class MenuController {
 	@Autowired
 	private MenuService menuService;
 
-	/* Get list of menus (Pregunta 2) */
+	/* Get list of menus (Question 2) */
 	/*
 	 * http://localhost:8080/menuRestful/menu/list
 	 */
@@ -61,7 +61,7 @@ public class MenuController {
 		return response;
 	}
 
-	/* Get a menu items ordered by price or ranking (Pregunta 3) */
+	/* Get a menu items ordered by price or ranking (Question 3) */
 	/*
 	 * http://localhost:8080/menuRestful/menu/1/items?orderby=price&asc=true
 	 */
