@@ -79,6 +79,20 @@ public class MenuControllerTest {
 	}
 
 	@Test
+	public void getItemsGroupedBy_ItemsFound_ShouldReturnFoundItems() throws Exception {
+
+		final MenusResponse response = new MenusResponse();
+		final Menu menu = menuDAOMockImpl.findById(1);
+
+		response.setCode(Util.OK_CODE);
+		response.setMessage(Util.OK_MESSAGE);
+
+		when(menuServiceMock.getItems(1, "price", true)).thenReturn(menu.getItems());
+
+		//TODO
+	}
+
+	@Test
 	public void sumPricesOfItems_ShouldReturnTotalPrice() {
 		final MenuService menuService = new MenuServiceImpl();
 		Menu menu;

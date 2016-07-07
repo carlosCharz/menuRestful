@@ -23,7 +23,7 @@ public class MenuServiceProfiler {
 	@Around("businessMethods()")
 	public Object profile(ProceedingJoinPoint pjp) throws Throwable {
 		long start = System.currentTimeMillis();
-		logger.debug("Going to call the method.");
+		logger.debug("Going to call the method: " + pjp.getSignature().getName());
 		Object output = pjp.proceed();
 		logger.debug("Method execution completed.");
 		long elapsedTime = System.currentTimeMillis() - start;

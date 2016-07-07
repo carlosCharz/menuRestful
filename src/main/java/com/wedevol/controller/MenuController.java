@@ -67,8 +67,8 @@ public class MenuController {
 	 */
 	@RequestMapping(value = "/{id}/items", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody ItemsResponse getItemsGroupedBy(@PathVariable("id") Integer id,
-			@RequestParam(value = "orderby", defaultValue = "price", required = true) String orderby,
-			@RequestParam(value = "asc", defaultValue = "true", required = true) Boolean asc) {
+			@RequestParam(value = "orderby", defaultValue = "price", required = false) String orderby,
+			@RequestParam(value = "asc", defaultValue = "true", required = false) Boolean asc) {
 
 		ItemsResponse response = new ItemsResponse();
 		List<Item> items;
