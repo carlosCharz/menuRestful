@@ -4,9 +4,9 @@ A menu restful WS.
 
 ##Technologies:
 
-1. spring mvc
-2. tomcat
-3. maven
+1. Spring mvc
+2. Tomcat
+3. Maven
 4. Git
 
 Additional features:
@@ -22,6 +22,7 @@ Considerations:
 
 * The database is mocked
 * Java 8
+* IDE: Eclipse Mars
 
 Additional tools to test the application:
 
@@ -29,28 +30,29 @@ Additional tools to test the application:
 
 ##Methods:
 
-1. 	**Get list of menus. HTTP Method: GET**
+1. **Get list of menus. HTTP Method: GET**
 ```
 http://localhost:8080/menuRestfulWS/menu/list
 ```
 
-2. 	**Get a menu items ordered by price or ranking. HTTP Method: GET**
+2. **Get a menu items ordered by price or ranking. HTTP Method: GET**
 ```
 http://localhost:8080/menuRestful/menu/1/items?orderby=price&asc=true
 ```
 
-3.  **Get a menu. HTTP Method: GET**
+3. **Get a menu. HTTP Method: GET**
 ```
 http://localhost:8080/menuRestful/menu/1
 ```
 
 ##Specific Business Logic:
 
-1.  **Sum of prices of items of a menu**
+1. **Sum of prices of items of a menu**
 ```
 public double sumPricesOfItems(final Menu menu){ ... }
 ```
-2.  **Get quantity of active submenus of a menu**
+
+2. **Get quantity of active submenus of a menu**
 ```
 public int getQtyActiveSubmenus(final Menu menu) { ... }
 ```
